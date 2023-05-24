@@ -1,0 +1,49 @@
+<html>
+   <head>
+      <title>ConcertBay</title>
+   </head>
+   <body>
+        {% include 'navbar.html' %}
+        <h1>Concierto {{concierto}}</h1>
+        <div>
+          <h2>Artista: </h2>
+          <p>{{artista}}</p>
+        </div>    
+        <div>
+          <h2>Descripción: </h2>
+          <p>{{descripcion}}</p>
+        </div>    
+        <div>
+            <h3>Fecha: </h3>
+            <p>{{fecha|date:'Y-m-d'}}</p>
+        </div>    
+        <div>
+          <h2>Nro tickets disponibles: </h2>
+          <p>{{nro_disponibles}}</p>
+        </div>    
+
+        <div>
+            <h3>Precios tickets</h3>
+            {% if lista_precios|length > 0 %}
+              <table>
+                <tr>
+                  <th>Ubicación</th>
+                  <th>Precio</th>
+                  <th></th>            
+                </tr>
+                 {% for id_localidad, lugar, precio in lista_precios %}
+                    <tr>
+                      <td>{{lugar}}</td>
+                      <td>{{precio}}</td>
+                      <td>
+                        <a href="/getInfoTicketById/{{id_localidad}}">Comprar</a>
+                      </td>
+                    </tr>
+                 {% endfor %}
+              </table>
+            {%  else %}
+              <p>No hay precios establecidos aún.</p>
+            {% endif %}     
+         </div>
+   </body>
+</html>

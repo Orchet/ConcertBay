@@ -1,0 +1,19 @@
+<html>
+   <head>
+      <title>ConcertBay</title>
+   </head>
+   <body>
+        {% include 'navbar.html' %}
+        <h1>Conciertos Disponibles</h1>
+        <ul>
+            {% for id_concierto, nombre_conciertos, nombre_artistas, fecha_conciertos, localidades_disp in listado %}
+            <li>
+                <a href="/getInfoConciertoById/{{id_concierto}}">
+                {{nombre_artistas}} {{"-"}} {{nombre_conciertos}} {{"-"}} {{fecha_conciertos|date:'Y-m-d'}} 
+                {{"-"}} {{localidades_disp}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+   </body>
+</html>

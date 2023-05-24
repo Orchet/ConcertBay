@@ -1,0 +1,39 @@
+<html>
+   <head>
+      <title>ConcertBay</title>
+   </head>
+   <body>
+        {% include 'navbar.html' %}
+        <h1>Verificación de Tickets</h1>
+        <div>
+            {% if listado_compras|length > 0 %}
+                <table>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Concierto</th>
+                    <th>Localidad</th>
+                    <th>Precio</th> 
+                    <th>Nro Tickets</th>
+                    <th>Total Compra</th>
+                    <th></th>
+                </tr>
+                {% for concierto, localidad, precio, numero, total, fecha in listado_compras %}
+                    <tr>
+                        <td>{{fecha|date:'Y-m-d  h:i:s'}}</td>
+                        <td>{{concierto}}</td>
+                        <td>{{localidad}}</td>
+                        <td>{{precio}}</td>
+                        <td>{{numero}}</td>
+                        <td>{{total}}</td>
+                        <td>
+                        <a href="/getInfoTicketById/{{id_localidad}}">Cancelar Compra</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {%  else %}
+                <p>No hay compras realizadas.</p>
+            {% endif %} 
+            </div>    
+    </body>
+</html>        

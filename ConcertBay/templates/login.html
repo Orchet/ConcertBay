@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+ <head>
+   <title>ConcertBay</title>
+   <link href="static/main.css" rel="stylesheet"/>
+ </head>
+ <body>
+   <div class="register-form-container">    
+     <h1>Iniciar sesión</h1>
+     <form method="POST" class="register-form">
+       {% csrf_token %}
+       {{ login_form }}
+       <br/>
+       <button type="submit" class="submit-button">Iniciar sesión</button>
+     </form>
+     <p>No tienes cuenta, <a href="/registro">Regístrate</a>.</p>
+   </div>
+ </body>
+</html>
